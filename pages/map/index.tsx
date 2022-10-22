@@ -9,7 +9,7 @@ const MapIndex: FC = () => {
   }
 
   return (
-    <>
+    <Box bgColor={'green'} height={'100vh'}>
       <Container maxW={{ md: '80%', sm: '90%' }} height={'80vh'}>
         <Box textAlign={'center'}>
           <h1>ねこにげ(仮)マップ</h1>
@@ -26,7 +26,7 @@ const MapIndex: FC = () => {
           ></iframe>
         </Center>
       </Container>
-    </>
+    </Box>
   )
 }
 

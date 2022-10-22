@@ -78,9 +78,7 @@ const Header: FC = () => {
           pt={{ base: 2, md: 0 }}
           pb={{ base: 1.5, md: 0 }}
         >
-          <Link href="/" w={{ base: '170px', md: '300px' }}>
-            ねこにげ(仮)
-          </Link>
+          <Link href="/" w={{ base: '170px', md: '300px' }}></Link>
         </Flex>
 
         <Spacer />
