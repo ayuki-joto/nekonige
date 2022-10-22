@@ -20,7 +20,7 @@ const MapIndex: FC = () => {
         <Center height={'100%'} display={loading ? 'none' : 'flex'}>
           <iframe
             onLoad={hideSpinner}
-            src="https://www.google.com/maps/d/embed?mid=1pO9OONWCtfgm9GFemvfmA6xwg-PQPgg&ehbc=2E312F"
+            src="https://www.google.com/maps/d/embed?mid=1pO9OONWCtfgm9GFemvfmA6xwg-PQPgg&ehbc=2E312F&z=10"
             width="80%"
             height="100%"
           ></iframe>
