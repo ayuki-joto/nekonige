@@ -1,0 +1,41 @@
+
+.header {
+  color: black;
+  z-index: 10;
+  transition: none;
+  background-color: transparent;
+
+  .linkGroup {
+    a {
+      transition: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    a:hover {
+      color: red;
+    }
+
+    .active {
+      color: red;
+      border-bottom: 3px solid red;
+    }
+  }
+
+  &.bgColor {
+    background-color: white;
+  }
+
+  .mobile_nav {
+    &_collapse {
+      position: relative;
+    }
+
+    &_icon {
+      background-color: rgba(0, 0, 0, 0);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.link_stack {
+  .box {
+    border-bottom: 1px solid gray;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+
+    &:hover{
+      background-color: gray;
+      color: white;
+    }
+  }
+  .link_text{
+    font-weight: 500;
+    line-height: 125%;
+  }
+}
