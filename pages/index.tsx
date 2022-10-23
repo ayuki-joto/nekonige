@@ -7,19 +7,23 @@ import {
   Container,
   Grid,
   GridItem,
-  Heading
+  Heading,
+  Stack
 } from '@chakra-ui/react'
 import girl from 'public/images/nekonige.png'
+import CustomHeading from 'component/Heading/CustomHeading'
+import Card from 'component/Card'
+import topIcon from 'public/images/logo_top.png'
 
 const Home: NextPage = () => {
   return (
     <>
-      <Box height={'100vh'} width={'100vw'} bgColor={'green'} pt={'6rem'}>
+      <Box height={'100vh'} width={'100vw'} bgColor={'green'} pt={'5vh'}>
         <Container
-          maxW={{ md: '6xl' }}
+          maxW={'90vw'}
           border={'5px solid white'}
           borderRadius={'2rem'}
-          height={'60vh'}
+          height={'90vh'}
           position={'relative'}
         >
           <Grid
@@ -38,27 +42,143 @@ const Home: NextPage = () => {
               </Box>
             </GridItem>
             <GridItem colSpan={1} color={'white'} alignSelf={'center'}>
-              <Heading
-                as={'h1'}
-                fontSize={'6rem'}
-                letterSpacing={'1rem'}
-                lineHeight={'180%'}
-              >
-                ねこにげ
-              </Heading>
+              <Box position={'relative'} height={'300px'} width={'80%'}>
+                <Image
+                  src={topIcon}
+                  alt={'icon'}
+                  objectFit={'contain'}
+                  layout={'fill'}
+                />
+              </Box>
               <Heading as={'h2'} size={'xl'} lineHeight={'180%'}>
-                ペットを連れて
+                いざというとき”うちの子”と一緒に
               </Heading>
               <Heading as={'h2'} size={'xl'}>
-                にげられる場所
+                安心してにげられる場所探しませんか
               </Heading>
             </GridItem>
           </Grid>
-          <Center mt={10} onClick={() => location.assign('/map')}>
-            <Button size="lg" height="4rem" width="20%" borderRadius={'2rem'}>
-              検索する
+        </Container>
+      </Box>
+      <Box
+        height={'80vh'}
+        width={'100vw'}
+        backgroundImage={'/images/cat.jpg'}
+        backgroundPosition={'center'}
+        backgroundSize={'auto'}
+      >
+        <Stack
+          display={'flex'}
+          justify={'center'}
+          textAlign={'center'}
+          height={'100%'}
+          backgroundColor={'rgba(255, 255, 255, 0.6)'}
+        >
+          <Box color={'#06377B'} fontSize={'4rem'} mb={5}>
+            ペットと一緒に避難できる避難所
+          </Box>
+          <Box fontSize={'2rem'} pb={16}>
+            わたしの家から一番近いのはどこ？
+            <br />
+            ペット同伴者専用の避難所や <br />
+            ペットと一緒に避難することを認めている避難所をまとめました
+            <br />
+          </Box>
+          <Center onClick={() => location.assign('/map')}>
+            <Button
+              size="lg"
+              height="4.5rem"
+              width="20%"
+              borderRadius={'2rem'}
+              border={'3px solid white'}
+              backgroundColor={'#E8DD5B'}
+              _hover={{ backgroundColor: '#EAE287' }}
+            >
+              周辺の避難所を検索する
             </Button>
           </Center>
+        </Stack>
+      </Box>
+      <Box bgColor={'#FDFAF0'} pt={'5rem'} pb={10}>
+        <Container maxW={'8xl'} mb={20}>
+          <CustomHeading imageSize={'54'}>
+            <Box fontSize={'3rem'}>ペット避難のニュース</Box>
+          </CustomHeading>
+          <Grid
+            templateColumns="repeat(3, 1fr)"
+            gap={6}
+            textAlign={'center'}
+            mb={5}
+            mt={10}
+          >
+            <Card
+              src={'/images/dummy.png'}
+              width={1920}
+              height={1080}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            />
+            <Card
+              src={'/images/dummy.png'}
+              width={1920}
+              height={1080}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            ></Card>
+            <Card
+              src={'/images/dummy.png'}
+              width={1920}
+              height={1080}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            ></Card>
+          </Grid>
+          <Box textAlign={'right'}>
+            <Button
+              onClick={() => location.assign('/news')}
+              backgroundColor={'#FDFAF0'}
+              _hover={{ backgroundColor: '#FDFAF0' }}
+            >
+              More {'>>'}
+            </Button>
+          </Box>
+        </Container>
+        <Container maxW={'8xl'} mb={20}>
+          <CustomHeading imageSize={'54'}>
+            <Box fontSize={'3rem'}>避難の準備とポイント</Box>
+          </CustomHeading>
+          <Grid
+            templateColumns="repeat(3, 1fr)"
+            gap={6}
+            textAlign={'center'}
+            mt={10}
+          >
+            <Card
+              src={'/images/dummy.png'}
+              width={1920}
+              height={1080}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            />
+            <Card
+              src={'/images/dummy.png'}
+              width={1920}
+              height={1080}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            ></Card>
+            <Card
+              src={'/images/dummy.png'}
+              width={1920}
+              height={1080}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            ></Card>
+          </Grid>
+
+          <Box textAlign={'right'}>
+            <Button
+              onClick={() => location.assign('/articles')}
+              backgroundColor={'#FDFAF0'}
+              _hover={{ backgroundColor: '#FDFAF0' }}
+            >
+              More {'>>'}
+            </Button>
+          </Box>
         </Container>
       </Box>
     </>

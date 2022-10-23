@@ -14,11 +14,12 @@ import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import styles from './Header.module.scss'
 import { useRouter } from 'next/router'
 import MobileLinkItem from 'component/Link/MobileLinkItem'
+import logo from 'public/images/logo_menubar.png'
+import Image from 'next/image'
 
 const Header: FC = () => {
   const router = useRouter()
   const { isOpen, onToggle } = useDisclosure()
-  const [bgColor, setBgColor] = useState(false)
   const [height, setHeight] = useState(0)
   const [isActiveNews, setIsActiveNews] = useState(false)
   const [isActiveMap, setIsActiveMap] = useState(false)
@@ -34,20 +35,6 @@ const Header: FC = () => {
   }, [])
 
   useEffect(() => {
-    function checkScroll() {
-      if (window.scrollY === 0) {
-        setBgColor(false)
-      } else {
-        setBgColor(true)
-      }
-    }
-    checkScroll()
-    window.addEventListener('scroll', checkScroll)
-    // Remove event listener on cleanup
-    return () => window.removeEventListener('resize', checkScroll)
-  }, [])
-
-  useEffect(() => {
     function checkRoute() {
       setIsActiveNews(router.pathname.includes('news'))
       setIsActiveMap(router.pathname.includes('map'))
@@ -57,6 +44,13 @@ const Header: FC = () => {
 
   return (
     <>
+      <Box
+        bgColor={'green'}
+        height={'10px'}
+        width={'100%'}
+        position={'fixed'}
+        zIndex={11}
+      ></Box>
       <Flex
         id="header"
         align="center"
@@ -65,10 +59,12 @@ const Header: FC = () => {
         w="100%"
         justify="space-between"
         wrap="wrap"
-        padding={{ base: 0, md: 6 }}
+        pt={6}
+        pl={6}
+        pr={6}
         backgroundColor={`${isOpen ? 'white' : ''}`}
         top={0}
-        className={`${styles.header} ${bgColor ? styles.bgColor : ''}`}
+        className={styles.header}
       >
         <Flex
           align="center"
@@ -78,11 +74,22 @@ const Header: FC = () => {
           pt={{ base: 2, md: 0 }}
           pb={{ base: 1.5, md: 0 }}
         >
-          <Link href="/" w={{ base: '170px', md: '300px' }}></Link>
+          <Link
+            href="/"
+            w={{ base: '170px', md: '140px' }}
+            height={'50px'}
+            position={'relative'}
+            textAlign={'left'}
+          >
+            <Image
+              src={logo}
+              layout={'fill'}
+              alt={'logo'}
+              objectFit={'contain'}
+            />
+          </Link>
         </Flex>
-
         <Spacer />
-
         <Flex
           align="center"
           display={{ base: 'flex', md: 'none' }}
@@ -95,7 +102,6 @@ const Header: FC = () => {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-
         <Stack
           display={{ base: 'none', md: 'flex' }}
           direction={{ base: 'column', md: 'row' }}
@@ -104,12 +110,22 @@ const Header: FC = () => {
           alignItems="center"
           flexGrow={1}
           className={styles.linkGroup}
+          gap={10}
         >
           <NextLink href="/map" passHref>
-            <Link className={isActiveMap ? styles.active : ''}>Map</Link>
+            <Link className={isActiveMap ? styles.active : ''}>
+              避難所を検索する
+            </Link>
           </NextLink>
           <NextLink href="/news" passHref>
-            <Link className={isActiveNews ? styles.active : ''}>News</Link>
+            <Link className={isActiveNews ? styles.active : ''}>
+              ペット避難のニュース
+            </Link>
+          </NextLink>
+          <NextLink href="/articles" passHref>
+            <Link className={isActiveNews ? styles.active : ''}>
+              避難の準備とポイント
+            </Link>
           </NextLink>
         </Stack>
         <Collapse
@@ -118,12 +134,13 @@ const Header: FC = () => {
           endingHeight={height}
           className={styles.mobile_nav_collapse}
         >
-          <MobileLinkItem label={'Map'} href={'/map'} />
-          <MobileLinkItem label={'News'} href={'/news'} />
+          <MobileLinkItem label={'避難所を検索する'} href={'/map'} />
+          <MobileLinkItem label={'ペット避難のニュース'} href={'/news'} />
+          <MobileLinkItem label={'避難の準備とポイント'} href={'/news'} />
         </Collapse>
       </Flex>
       {router.pathname !== '/' && (
-        <Box height={{ md: '6rem', base: '3.2em' }}></Box>
+        <Box height={{ md: '5rem', base: '3.2em' }}></Box>
       )}
     </>
   )
