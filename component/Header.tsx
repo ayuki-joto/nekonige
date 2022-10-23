@@ -18,7 +18,6 @@ import MobileLinkItem from 'component/Link/MobileLinkItem'
 const Header: FC = () => {
   const router = useRouter()
   const { isOpen, onToggle } = useDisclosure()
-  const [bgColor, setBgColor] = useState(false)
   const [height, setHeight] = useState(0)
   const [isActiveNews, setIsActiveNews] = useState(false)
   const [isActiveMap, setIsActiveMap] = useState(false)
@@ -34,20 +33,6 @@ const Header: FC = () => {
   }, [])
 
   useEffect(() => {
-    function checkScroll() {
-      if (window.scrollY === 0) {
-        setBgColor(false)
-      } else {
-        setBgColor(true)
-      }
-    }
-    checkScroll()
-    window.addEventListener('scroll', checkScroll)
-    // Remove event listener on cleanup
-    return () => window.removeEventListener('resize', checkScroll)
-  }, [])
-
-  useEffect(() => {
     function checkRoute() {
       setIsActiveNews(router.pathname.includes('news'))
       setIsActiveMap(router.pathname.includes('map'))
@@ -57,6 +42,13 @@ const Header: FC = () => {
 
   return (
     <>
+      <Box
+        bgColor={'green'}
+        height={'10px'}
+        width={'100%'}
+        position={'fixed'}
+        zIndex={11}
+      ></Box>
       <Flex
         id="header"
         align="center"
@@ -68,7 +60,7 @@ const Header: FC = () => {
         padding={{ base: 0, md: 6 }}
         backgroundColor={`${isOpen ? 'white' : ''}`}
         top={0}
-        className={`${styles.header} ${bgColor ? styles.bgColor : ''}`}
+        className={styles.header}
       >
         <Flex
           align="center"
@@ -78,11 +70,11 @@ const Header: FC = () => {
           pt={{ base: 2, md: 0 }}
           pb={{ base: 1.5, md: 0 }}
         >
-          <Link href="/" w={{ base: '170px', md: '300px' }}></Link>
+          <Link href="/" w={{ base: '170px', md: '300px' }}>
+            ねこにげ
+          </Link>
         </Flex>
-
         <Spacer />
-
         <Flex
           align="center"
           display={{ base: 'flex', md: 'none' }}
@@ -95,7 +87,6 @@ const Header: FC = () => {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-
         <Stack
           display={{ base: 'none', md: 'flex' }}
           direction={{ base: 'column', md: 'row' }}
@@ -104,12 +95,18 @@ const Header: FC = () => {
           alignItems="center"
           flexGrow={1}
           className={styles.linkGroup}
+          gap={10}
         >
           <NextLink href="/map" passHref>
-            <Link className={isActiveMap ? styles.active : ''}>Map</Link>
+            <Link className={isActiveMap ? styles.active : ''}>
+              避難所を検索する
+            </Link>
           </NextLink>
           <NextLink href="/news" passHref>
-            <Link className={isActiveNews ? styles.active : ''}>News</Link>
+            <Link className={isActiveNews ? styles.active : ''}>最新記事</Link>
+          </NextLink>
+          <NextLink href="/articles" passHref>
+            <Link className={isActiveNews ? styles.active : ''}>記事一覧</Link>
           </NextLink>
         </Stack>
         <Collapse
@@ -123,7 +120,7 @@ const Header: FC = () => {
         </Collapse>
       </Flex>
       {router.pathname !== '/' && (
-        <Box height={{ md: '6rem', base: '3.2em' }}></Box>
+        <Box height={{ md: '5rem', base: '3.2em' }}></Box>
       )}
     </>
   )

@@ -3,7 +3,7 @@
   color: black;
   z-index: 10;
   transition: none;
-  background-color: transparent;
+  background-color: white;
 
   .linkGroup {
     a {
@@ -12,17 +12,13 @@
       font-weight: 500;
     }
     a:hover {
-      color: red;
+      color: green;
     }
 
     .active {
-      color: red;
-      border-bottom: 3px solid red;
+      color: green;
+      border-bottom: 3px solid green;
     }
-  }
-
-  &.bgColor {
-    background-color: white;
   }
 
   .mobile_nav {
