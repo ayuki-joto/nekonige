@@ -14,6 +14,8 @@ import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import styles from './Header.module.scss'
 import { useRouter } from 'next/router'
 import MobileLinkItem from 'component/Link/MobileLinkItem'
+import logo from 'public/images/logo_menubar.png'
+import Image from 'next/image'
 
 const Header: FC = () => {
   const router = useRouter()
@@ -57,7 +59,9 @@ const Header: FC = () => {
         w="100%"
         justify="space-between"
         wrap="wrap"
-        padding={{ base: 0, md: 6 }}
+        pt={6}
+        pl={6}
+        pr={6}
         backgroundColor={`${isOpen ? 'white' : ''}`}
         top={0}
         className={styles.header}
@@ -70,8 +74,19 @@ const Header: FC = () => {
           pt={{ base: 2, md: 0 }}
           pb={{ base: 1.5, md: 0 }}
         >
-          <Link href="/" w={{ base: '170px', md: '300px' }}>
-            ねこにげ
+          <Link
+            href="/"
+            w={{ base: '170px', md: '140px' }}
+            height={'50px'}
+            position={'relative'}
+            textAlign={'left'}
+          >
+            <Image
+              src={logo}
+              layout={'fill'}
+              alt={'logo'}
+              objectFit={'contain'}
+            />
           </Link>
         </Flex>
         <Spacer />

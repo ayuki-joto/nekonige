@@ -13,6 +13,7 @@ import {
 import girl from 'public/images/nekonige.png'
 import CustomHeading from 'component/Heading/CustomHeading'
 import Card from 'component/Card'
+import topIcon from 'public/images/logo_top.png'
 
 const Home: NextPage = () => {
   return (
@@ -41,14 +42,14 @@ const Home: NextPage = () => {
               </Box>
             </GridItem>
             <GridItem colSpan={1} color={'white'} alignSelf={'center'}>
-              <Heading
-                as={'h1'}
-                fontSize={'6rem'}
-                letterSpacing={'1rem'}
-                lineHeight={'180%'}
-              >
-                ねこにげ
-              </Heading>
+              <Box position={'relative'} height={'300px'} width={'80%'}>
+                <Image
+                  src={topIcon}
+                  alt={'icon'}
+                  objectFit={'contain'}
+                  layout={'fill'}
+                />
+              </Box>
               <Heading as={'h2'} size={'xl'} lineHeight={'180%'}>
                 いざというとき”うちの子”と一緒に
               </Heading>
