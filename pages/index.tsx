@@ -12,16 +12,17 @@ import {
 } from '@chakra-ui/react'
 import girl from 'public/images/nekonige.png'
 import CustomHeading from 'component/Heading/CustomHeading'
+import Card from 'component/Card'
 
 const Home: NextPage = () => {
   return (
     <>
-      <Box height={'100vh'} width={'100vw'} bgColor={'green'} pt={'5vh'}>
+      <Box height={'90vh'} width={'100vw'} bgColor={'green'} pt={'5vh'}>
         <Container
           maxW={'90vw'}
           border={'5px solid white'}
           borderRadius={'2rem'}
-          height={'90vh'}
+          height={'80vh'}
           position={'relative'}
         >
           <Grid
@@ -69,7 +70,7 @@ const Home: NextPage = () => {
           justify={'center'}
           textAlign={'center'}
           height={'100%'}
-          backgroundColor={'rgba(255, 255, 255, 0.5)'}
+          backgroundColor={'rgba(255, 255, 255, 0.6)'}
         >
           <Box color={'#06377B'} fontSize={'4rem'} mb={5}>
             ペットと一緒に避難できる避難所
@@ -96,17 +97,87 @@ const Home: NextPage = () => {
           </Center>
         </Stack>
       </Box>
-      <Box bgColor={'#FDFAF0'} pt={'5rem'}>
-        <CustomHeading imageSize={'54'}>
-          <Box fontSize={'3rem'}>最新情報 </Box>
-        </CustomHeading>
-        <Grid
-          templateColumns="repeat(3, 1fr)"
-          gap={6}
-          alignSelf={'center'}
-          alignContent={'center'}
-          alignItems={'center'}
-        ></Grid>
+      <Box bgColor={'#FDFAF0'} pt={'5rem'} pb={10}>
+        <Container maxW={'8xl'} mb={20}>
+          <CustomHeading imageSize={'54'}>
+            <Box fontSize={'3rem'}>ペット避難のニュース</Box>
+          </CustomHeading>
+          <Grid
+            templateColumns="repeat(3, 1fr)"
+            gap={6}
+            textAlign={'center'}
+            mb={5}
+            mt={10}
+          >
+            <Card
+              src={'/images/dummy.png'}
+              width={300}
+              height={300}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            />
+            <Card
+              src={'/images/dummy.png'}
+              width={300}
+              height={300}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            ></Card>
+            <Card
+              src={'/images/dummy.png'}
+              width={300}
+              height={300}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            ></Card>
+          </Grid>
+          <Box textAlign={'right'}>
+            <Button
+              onClick={() => location.assign('/news')}
+              backgroundColor={'#FDFAF0'}
+              _hover={{ backgroundColor: '#FDFAF0' }}
+            >
+              More {'>>'}
+            </Button>
+          </Box>
+        </Container>
+        <Container maxW={'8xl'} mb={20}>
+          <CustomHeading imageSize={'54'}>
+            <Box fontSize={'3rem'}>避難の準備とポイント</Box>
+          </CustomHeading>
+          <Grid
+            templateColumns="repeat(3, 1fr)"
+            gap={6}
+            textAlign={'center'}
+            mt={10}
+          >
+            <Card
+              src={'/images/dummy.png'}
+              width={300}
+              height={300}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            />
+            <Card
+              src={'/images/dummy.png'}
+              width={300}
+              height={300}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            ></Card>
+            <Card
+              src={'/images/dummy.png'}
+              width={300}
+              height={300}
+              alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            ></Card>
+          </Grid>
+
+          <Box textAlign={'right'}>
+            <Button
+              onClick={() => location.assign('/articles')}
+              backgroundColor={'#FDFAF0'}
+              _hover={{ backgroundColor: '#FDFAF0' }}
+            >
+              More {'>>'}
+            </Button>
+          </Box>
+        </Container>
       </Box>
     </>
   )
