@@ -16,7 +16,7 @@ const Home: NextPage<{
       <div className={ scss.inner }>
         <div className={ scss.wrapper }>
 
-          <span>記事一覧 > 「飼い主の命にもかかわる　ペットの避難対策」</span>
+          <span>記事一覧 &gt; 「飼い主の命にもかかわる　ペットの避難対策」</span>
 
           <h1>飼い主の命にもかかわる　ペットの避難対策</h1>
 
@@ -44,4 +44,5 @@ const Home: NextPage<{
     </div>
   )
 };
-export default Home
+export default Home;
+
