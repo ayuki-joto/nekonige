@@ -103,10 +103,14 @@ const Header: FC = () => {
             </Link>
           </NextLink>
           <NextLink href="/news" passHref>
-            <Link className={isActiveNews ? styles.active : ''}>最新記事</Link>
+            <Link className={isActiveNews ? styles.active : ''}>
+              ペット避難のニュース
+            </Link>
           </NextLink>
           <NextLink href="/articles" passHref>
-            <Link className={isActiveNews ? styles.active : ''}>記事一覧</Link>
+            <Link className={isActiveNews ? styles.active : ''}>
+              避難の準備とポイント
+            </Link>
           </NextLink>
         </Stack>
         <Collapse
@@ -115,8 +119,9 @@ const Header: FC = () => {
           endingHeight={height}
           className={styles.mobile_nav_collapse}
         >
-          <MobileLinkItem label={'Map'} href={'/map'} />
-          <MobileLinkItem label={'News'} href={'/news'} />
+          <MobileLinkItem label={'避難所を検索する'} href={'/map'} />
+          <MobileLinkItem label={'ペット避難のニュース'} href={'/news'} />
+          <MobileLinkItem label={'避難の準備とポイント'} href={'/news'} />
         </Collapse>
       </Flex>
       {router.pathname !== '/' && (
