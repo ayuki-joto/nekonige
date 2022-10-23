@@ -65,6 +65,7 @@ const Home: NextPage = () => {
         width={'100vw'}
         backgroundImage={'/images/cat.jpg'}
         backgroundPosition={'center'}
+        backgroundSize={'auto'}
       >
         <Stack
           display={'flex'}
@@ -112,20 +113,20 @@ const Home: NextPage = () => {
           >
             <Card
               src={'/images/dummy.png'}
-              width={300}
-              height={300}
+              width={1920}
+              height={1080}
               alt={'texttexttexttexttexttexttexttexttexttexttext'}
             />
             <Card
               src={'/images/dummy.png'}
-              width={300}
-              height={300}
+              width={1920}
+              height={1080}
               alt={'texttexttexttexttexttexttexttexttexttexttext'}
             ></Card>
             <Card
               src={'/images/dummy.png'}
-              width={300}
-              height={300}
+              width={1920}
+              height={1080}
               alt={'texttexttexttexttexttexttexttexttexttexttext'}
             ></Card>
           </Grid>
@@ -151,20 +152,20 @@ const Home: NextPage = () => {
           >
             <Card
               src={'/images/dummy.png'}
-              width={300}
-              height={300}
+              width={1920}
+              height={1080}
               alt={'texttexttexttexttexttexttexttexttexttexttext'}
             />
             <Card
               src={'/images/dummy.png'}
-              width={300}
-              height={300}
+              width={1920}
+              height={1080}
               alt={'texttexttexttexttexttexttexttexttexttexttext'}
             ></Card>
             <Card
               src={'/images/dummy.png'}
-              width={300}
-              height={300}
+              width={1920}
+              height={1080}
               alt={'texttexttexttexttexttexttexttexttexttexttext'}
             ></Card>
           </Grid>
