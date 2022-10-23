@@ -18,12 +18,12 @@ import topIcon from 'public/images/logo_top.png'
 const Home: NextPage = () => {
   return (
     <>
-      <Box height={'90vh'} width={'100vw'} bgColor={'green'} pt={'5vh'}>
+      <Box height={'100vh'} width={'100vw'} bgColor={'green'} pt={'5vh'}>
         <Container
           maxW={'90vw'}
           border={'5px solid white'}
           borderRadius={'2rem'}
-          height={'80vh'}
+          height={'90vh'}
           position={'relative'}
         >
           <Grid
