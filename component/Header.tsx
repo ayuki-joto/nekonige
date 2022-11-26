@@ -23,6 +23,7 @@ const Header: FC = () => {
   const [height, setHeight] = useState(0)
   const [isActiveNews, setIsActiveNews] = useState(false)
   const [isActiveMap, setIsActiveMap] = useState(false)
+  const [isActiveForm, setIsActiveForm] = useState(false)
 
   useEffect(() => {
     function isSmartPhone() {
@@ -38,6 +39,7 @@ const Header: FC = () => {
     function checkRoute() {
       setIsActiveNews(router.pathname.includes('news'))
       setIsActiveMap(router.pathname.includes('map'))
+      setIsActiveForm(router.pathname.includes('form'))
     }
     checkRoute()
   }, [router])
@@ -117,8 +119,8 @@ const Header: FC = () => {
               避難所を検索する
             </Link>
           </NextLink>
-          <NextLink href="/map/form" passHref>
-            <Link className={isActiveMap ? styles.active : ''}>
+          <NextLink href="/form" passHref>
+            <Link className={isActiveForm ? styles.active : ''}>
               避難所を追加する
             </Link>
           </NextLink>
@@ -140,8 +142,9 @@ const Header: FC = () => {
           className={styles.mobile_nav_collapse}
         >
           <MobileLinkItem label={'避難所を検索する'} href={'/map'} />
-          <MobileLinkItem label={'ペット避難のニュース'} href={'/news'} />
-          <MobileLinkItem label={'避難の準備とポイント'} href={'/news'} />
+          <MobileLinkItem label={'避難所を追加する'} href={'/form'} />
+          {/*<MobileLinkItem label={'ペット避難のニュース'} href={'/news'} />*/}
+          <MobileLinkItem label={'避難の準備とポイント'} href={'/articles'} />
         </Collapse>
       </Flex>
       {router.pathname !== '/' && (
