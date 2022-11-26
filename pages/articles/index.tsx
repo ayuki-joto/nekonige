@@ -8,41 +8,45 @@ const ArticleIndex: FC = () => {
   return (
     <>
       <Header />
-      <Container maxW={'8xl'} mb={20} mt={20}>
-        <CustomHeading imageSize={useBreakpointValue({ base: '32', md: '54' })}>
-          <Box fontSize={{ md: '3rem', base: '1rem' }}>
-            避難の準備とポイント
-          </Box>
-        </CustomHeading>
-        <Grid
-          templateColumns="repeat(3, 1fr)"
-          gap={6}
-          textAlign={'center'}
-          mt={20}
-        >
-          <Card
-            src={'/images/cat.jpg'}
-            width={1920}
-            height={1080}
-            alt={'飼い主の命にもかかわる　ペットの避難対策'}
-            link={'/articles/1'}
-          />
-          <Card
-            src={'/images/hinanjo.jpg'}
-            width={1920}
-            height={1080}
-            alt={'気をつけたい　避難所でのトラブル'}
-            link={'/articles/2'}
-          ></Card>
-          <Card
-            src={'/images/kuro.png'}
-            width={1920}
-            height={1080}
-            alt={'ペットとは同行避難が原則'}
-            link={'/articles/3'}
-          ></Card>
-        </Grid>
-      </Container>
+      <Box bgColor={'#FDFAF0'} height={'100vh'} width={'100%'} pt={10}>
+        <Container maxW={'8xl'} mb={20} pt={10}>
+          <CustomHeading
+            imageSize={useBreakpointValue({ base: '32', md: '54' })}
+          >
+            <Box fontSize={{ md: '3rem', base: '1rem' }}>
+              避難の準備とポイント
+            </Box>
+          </CustomHeading>
+          <Grid
+            templateColumns="repeat(3, 1fr)"
+            gap={6}
+            textAlign={'center'}
+            mt={20}
+          >
+            <Card
+              src={'/images/cat.jpg'}
+              width={1920}
+              height={1080}
+              alt={'飼い主の命にもかかわる　ペットの避難対策'}
+              link={'/articles/1'}
+            />
+            <Card
+              src={'/images/hinanjo.jpg'}
+              width={1920}
+              height={1080}
+              alt={'気をつけたい　避難所でのトラブル'}
+              link={'/articles/2'}
+            ></Card>
+            <Card
+              src={'/images/kuro.png'}
+              width={1920}
+              height={1080}
+              alt={'ペットとは同行避難が原則'}
+              link={'/articles/3'}
+            ></Card>
+          </Grid>
+        </Container>
+      </Box>
     </>
   )
 }

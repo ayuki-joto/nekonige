@@ -19,7 +19,7 @@ const MapIndex: FC = () => {
   return (
     <>
       <Header />
-      <Box bgColor={'#FDFAF0'} height={'100vh'} width={'100%'}>
+      <Box bgColor={'#FDFAF0'} height={'100vh'} width={'100%'} pt={10}>
         <Container maxW={{ md: '80%', sm: '100%' }} height={'80vh'} pt={10}>
           <Box pb={10}>
             <CustomHeading

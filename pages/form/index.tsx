@@ -7,7 +7,7 @@ const Index: FC = () => {
   return (
     <>
       <Header />
-      <Box bgColor={'#FDFAF0'}>
+      <Box bgColor={'#FDFAF0'} pt={10}>
         <Container maxW={{ md: '80%', sm: '90%' }} pt={10}>
           <Box pb={10}>
             <CustomHeading
