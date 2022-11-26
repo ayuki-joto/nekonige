@@ -104,46 +104,46 @@ const Home: NextPage = () => {
           </Stack>
         </Box>
         <Box bgColor={'#FDFAF0'} pt={'5rem'} pb={10}>
-          <Container maxW={'8xl'} mb={20}>
-            <CustomHeading imageSize={'54'}>
-              <Box fontSize={'3rem'}>ペット避難のニュース</Box>
-            </CustomHeading>
-            <Grid
-              templateColumns="repeat(3, 1fr)"
-              gap={6}
-              textAlign={'center'}
-              mb={5}
-              mt={10}
-            >
-              <Card
-                src={'/images/dummy.png'}
-                width={1920}
-                height={1080}
-                alt={'texttexttexttexttexttexttexttexttexttexttext'}
-              />
-              <Card
-                src={'/images/dummy.png'}
-                width={1920}
-                height={1080}
-                alt={'texttexttexttexttexttexttexttexttexttexttext'}
-              ></Card>
-              <Card
-                src={'/images/dummy.png'}
-                width={1920}
-                height={1080}
-                alt={'texttexttexttexttexttexttexttexttexttexttext'}
-              ></Card>
-            </Grid>
-            <Box textAlign={'right'}>
-              <Button
-                onClick={() => location.assign('/news')}
-                backgroundColor={'#FDFAF0'}
-                _hover={{ backgroundColor: '#FDFAF0' }}
-              >
-                More {'>>'}
-              </Button>
-            </Box>
-          </Container>
+          {/*<Container maxW={'8xl'} mb={20}>*/}
+          {/*  <CustomHeading imageSize={'54'}>*/}
+          {/*    <Box fontSize={'3rem'}>ペット避難のニュース</Box>*/}
+          {/*  </CustomHeading>*/}
+          {/*  <Grid*/}
+          {/*    templateColumns="repeat(3, 1fr)"*/}
+          {/*    gap={6}*/}
+          {/*    textAlign={'center'}*/}
+          {/*    mb={5}*/}
+          {/*    mt={10}*/}
+          {/*  >*/}
+          {/*    <Card*/}
+          {/*      src={'/images/dummy.png'}*/}
+          {/*      width={1920}*/}
+          {/*      height={1080}*/}
+          {/*      alt={'texttexttexttexttexttexttexttexttexttexttext'}*/}
+          {/*    />*/}
+          {/*    <Card*/}
+          {/*      src={'/images/dummy.png'}*/}
+          {/*      width={1920}*/}
+          {/*      height={1080}*/}
+          {/*      alt={'texttexttexttexttexttexttexttexttexttexttext'}*/}
+          {/*    ></Card>*/}
+          {/*    <Card*/}
+          {/*      src={'/images/dummy.png'}*/}
+          {/*      width={1920}*/}
+          {/*      height={1080}*/}
+          {/*      alt={'texttexttexttexttexttexttexttexttexttexttext'}*/}
+          {/*    ></Card>*/}
+          {/*  </Grid>*/}
+          {/*  <Box textAlign={'right'}>*/}
+          {/*    <Button*/}
+          {/*      onClick={() => location.assign('/news')}*/}
+          {/*      backgroundColor={'#FDFAF0'}*/}
+          {/*      _hover={{ backgroundColor: '#FDFAF0' }}*/}
+          {/*    >*/}
+          {/*      More {'>>'}*/}
+          {/*    </Button>*/}
+          {/*  </Box>*/}
+          {/*</Container>*/}
           <Container maxW={'8xl'} mb={20}>
             <CustomHeading imageSize={'54'}>
               <Box fontSize={'3rem'}>避難の準備とポイント</Box>
@@ -155,10 +155,11 @@ const Home: NextPage = () => {
               mt={10}
             >
               <Card
-                src={'/images/dummy.png'}
+                src={'/images/cat.jpg'}
                 width={1920}
                 height={1080}
-                alt={'texttexttexttexttexttexttexttexttexttexttext'}
+                alt={'飼い主の命にもかかわる　ペットの避難対策'}
+                link={'/articles/1'}
               />
               <Card
                 src={'/images/dummy.png'}
