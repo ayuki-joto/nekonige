@@ -88,7 +88,7 @@ const Home: NextPage = () => {
               ペットと一緒に避難することを認めている避難所をまとめました
               <br />
             </Box>
-            <Center onClick={() => location.assign('/map')}>
+            <Center>
               <Button
                 size="lg"
                 height="4.5rem"
@@ -97,8 +97,22 @@ const Home: NextPage = () => {
                 border={'3px solid white'}
                 backgroundColor={'#E8DD5B'}
                 _hover={{ backgroundColor: '#EAE287' }}
+                onClick={() => location.assign('/map')}
               >
                 周辺の避難所を検索する
+              </Button>
+              <Button
+                size="lg"
+                height="4.5rem"
+                width="20%"
+                borderRadius={'2rem'}
+                border={'3px solid white'}
+                backgroundColor={'#E8DD5B'}
+                ml={5}
+                _hover={{ backgroundColor: '#EAE287' }}
+                onClick={() => location.assign('/map/form')}
+              >
+                避難所を追加する
               </Button>
             </Center>
           </Stack>
