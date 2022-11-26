@@ -117,6 +117,11 @@ const Header: FC = () => {
               避難所を検索する
             </Link>
           </NextLink>
+          <NextLink href="/map/form" passHref>
+            <Link className={isActiveMap ? styles.active : ''}>
+              避難所を追加する
+            </Link>
+          </NextLink>
           {/*<NextLink href="/news" passHref>*/}
           {/*  <Link className={isActiveNews ? styles.active : ''}>*/}
           {/*    ペット避難のニュース*/}
