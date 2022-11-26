@@ -1,5 +1,11 @@
 import { FC, useState } from 'react'
-import { Box, Center, Container, Spinner } from '@chakra-ui/react'
+import {
+  Box,
+  Center,
+  Container,
+  Spinner,
+  useBreakpointValue
+} from '@chakra-ui/react'
 import Header from 'component/Header'
 import CustomHeading from 'component/Heading/CustomHeading'
 
@@ -13,11 +19,15 @@ const MapIndex: FC = () => {
   return (
     <>
       <Header />
-      <Box bgColor={'#FDFAF0'} height={'90vh'}>
-        <Container maxW={{ md: '80%', sm: '90%' }} height={'80vh'} pt={10}>
+      <Box bgColor={'#FDFAF0'} height={'100vh'} width={'100%'}>
+        <Container maxW={{ md: '80%', sm: '100%' }} height={'80vh'} pt={10}>
           <Box pb={10}>
-            <CustomHeading imageSize={'54'}>
-              <Box fontSize={'3rem'}>周辺の避難所を検索する</Box>
+            <CustomHeading
+              imageSize={useBreakpointValue({ base: '32', md: '54' })}
+            >
+              <Box fontSize={{ md: '3rem', base: '1rem' }}>
+                周辺の避難所を検索する
+              </Box>
             </CustomHeading>
           </Box>
           <Center height={'100%'} display={loading ? 'flex' : 'none'}>

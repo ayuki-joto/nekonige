@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Header from 'component/Header'
 import CustomHeading from 'component/Heading/CustomHeading'
-import { Box, Container, Grid } from '@chakra-ui/react'
+import { Box, Container, Grid, useBreakpointValue } from '@chakra-ui/react'
 import Card from 'component/Card'
 
 const ArticleIndex: FC = () => {
@@ -9,8 +9,10 @@ const ArticleIndex: FC = () => {
     <>
       <Header />
       <Container maxW={'8xl'} mb={20} mt={20}>
-        <CustomHeading imageSize={'54'}>
-          <Box fontSize={'3rem'}>避難の準備とポイント</Box>
+        <CustomHeading imageSize={useBreakpointValue({ base: '32', md: '54' })}>
+          <Box fontSize={{ md: '3rem', base: '1rem' }}>
+            避難の準備とポイント
+          </Box>
         </CustomHeading>
         <Grid
           templateColumns="repeat(3, 1fr)"

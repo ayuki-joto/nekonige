@@ -8,7 +8,8 @@ import {
   Grid,
   GridItem,
   Heading,
-  Stack
+  Stack,
+  useBreakpointValue
 } from '@chakra-ui/react'
 import girl from 'public/images/nekonige.png'
 import CustomHeading from 'component/Heading/CustomHeading'
@@ -125,7 +126,7 @@ const Home: NextPage = () => {
                     border={'3px solid white'}
                     backgroundColor={'#E8DD5B'}
                     _hover={{ backgroundColor: '#EAE287' }}
-                    onClick={() => location.assign('/map/form')}
+                    onClick={() => location.assign('/form')}
                   >
                     避難所を追加する
                   </Button>
@@ -176,7 +177,9 @@ const Home: NextPage = () => {
           {/*  </Box>*/}
           {/*</Container>*/}
           <Container maxW={'8xl'} mb={{ md: 20, base: 0 }}>
-            <CustomHeading imageSize={'54'}>
+            <CustomHeading
+              imageSize={useBreakpointValue({ base: '32', md: '54' })}
+            >
               <Box fontSize={{ md: '3rem', base: '1rem' }}>
                 避難の準備とポイント
               </Box>
