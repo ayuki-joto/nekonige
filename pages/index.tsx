@@ -162,16 +162,18 @@ const Home: NextPage = () => {
                 link={'/articles/1'}
               />
               <Card
-                src={'/images/dummy.png'}
+                src={'/images/hinanjo.jpg'}
                 width={1920}
                 height={1080}
-                alt={'texttexttexttexttexttexttexttexttexttexttext'}
+                alt={'気をつけたい　避難所でのトラブル'}
+                link={'/articles/2'}
               ></Card>
               <Card
-                src={'/images/dummy.png'}
+                src={'/images/kuro.png'}
                 width={1920}
                 height={1080}
-                alt={'texttexttexttexttexttexttexttexttexttexttext'}
+                alt={'ペットとは同行避難が原則'}
+                link={'/articles/3'}
               ></Card>
             </Grid>
 

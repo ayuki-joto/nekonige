@@ -117,11 +117,11 @@ const Header: FC = () => {
               避難所を検索する
             </Link>
           </NextLink>
-          <NextLink href="/news" passHref>
-            <Link className={isActiveNews ? styles.active : ''}>
-              ペット避難のニュース
-            </Link>
-          </NextLink>
+          {/*<NextLink href="/news" passHref>*/}
+          {/*  <Link className={isActiveNews ? styles.active : ''}>*/}
+          {/*    ペット避難のニュース*/}
+          {/*  </Link>*/}
+          {/*</NextLink>*/}
           <NextLink href="/articles" passHref>
             <Link className={isActiveNews ? styles.active : ''}>
               避難の準備とポイント

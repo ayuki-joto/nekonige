@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Header from 'component/Header'
 import CustomHeading from 'component/Heading/CustomHeading'
-import { Box, Button, Container, Grid } from '@chakra-ui/react'
+import { Box, Container, Grid } from '@chakra-ui/react'
 import Card from 'component/Card'
 
 const ArticleIndex: FC = () => {
@@ -26,16 +26,18 @@ const ArticleIndex: FC = () => {
             link={'/articles/1'}
           />
           <Card
-            src={'/images/dummy.png'}
+            src={'/images/hinanjo.jpg'}
             width={1920}
             height={1080}
-            alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            alt={'気をつけたい　避難所でのトラブル'}
+            link={'/articles/2'}
           ></Card>
           <Card
-            src={'/images/dummy.png'}
+            src={'/images/kuro.png'}
             width={1920}
             height={1080}
-            alt={'texttexttexttexttexttexttexttexttexttexttext'}
+            alt={'ペットとは同行避難が原則'}
+            link={'/articles/3'}
           ></Card>
         </Grid>
       </Container>
