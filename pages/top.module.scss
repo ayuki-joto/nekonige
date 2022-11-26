@@ -1,6 +1,7 @@
 .print {
   display: none;
 }
+
 @media print {
   .no_print {
     display: none;
@@ -8,5 +9,8 @@
 
   .print {
     display: block;
+    @page {
+      size: A4;
+    }
   }
 }

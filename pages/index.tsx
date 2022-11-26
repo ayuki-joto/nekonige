@@ -219,6 +219,7 @@ const Home: NextPage = () => {
           alt={'checkSheat'}
           layout={'fill'}
           objectFit={'contain'}
+          priority
         />
       </Box>
     </>
