@@ -36,14 +36,21 @@ const ArticleIndex: FC = () => {
               height={1080}
               alt={'気をつけたい　避難所でのトラブル'}
               link={'/articles/2'}
-            ></Card>
+            />
             <Card
               src={'/images/kuro.png'}
               width={1920}
               height={1080}
               alt={'ペットとは同行避難が原則'}
               link={'/articles/3'}
-            ></Card>
+            />
+            <Card
+              src={'/images/pet.png'}
+              width={1920}
+              height={1080}
+              alt={'災害時、ペットにもいつも以上の気配りを'}
+              link={'/articles/4'}
+            />
           </Grid>
         </Container>
       </Box>
