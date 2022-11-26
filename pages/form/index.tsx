@@ -1,17 +1,21 @@
 import { FC } from 'react'
 import Header from 'component/Header'
-import { Box, Center, Container } from '@chakra-ui/react'
+import { Box, Center, Container, useBreakpointValue } from '@chakra-ui/react'
 import CustomHeading from 'component/Heading/CustomHeading'
 
-const form: FC = () => {
+const Index: FC = () => {
   return (
     <>
       <Header />
       <Box bgColor={'#FDFAF0'}>
         <Container maxW={{ md: '80%', sm: '90%' }} pt={10}>
           <Box pb={10}>
-            <CustomHeading imageSize={'54'}>
-              <Box fontSize={'3rem'}>避難所を追加する</Box>
+            <CustomHeading
+              imageSize={useBreakpointValue({ base: '32', md: '54' })}
+            >
+              <Box fontSize={{ md: '3rem', base: '1rem' }}>
+                避難所を追加する
+              </Box>
             </CustomHeading>
           </Box>
           <Center>
@@ -29,4 +33,4 @@ const form: FC = () => {
   )
 }
 
-export default form
+export default Index
