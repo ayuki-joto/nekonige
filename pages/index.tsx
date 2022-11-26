@@ -47,7 +47,11 @@ const Home: NextPage = () => {
                 </Box>
               </GridItem>
               <GridItem colSpan={1} color={'white'} alignSelf={'center'}>
-                <Box position={'relative'} height={'300px'} width={'80%'}>
+                <Box
+                  position={'relative'}
+                  height={{ md: '300px', base: '150px' }}
+                  width={'80%'}
+                >
                   <Image
                     src={topIcon}
                     alt={'icon'}
