@@ -54,10 +54,14 @@ const Home: NextPage = () => {
                     layout={'fill'}
                   />
                 </Box>
-                <Heading as={'h2'} size={'xl'} lineHeight={'180%'}>
+                <Heading
+                  as={'h2'}
+                  size={{ md: 'xl', base: 'md' }}
+                  lineHeight={'180%'}
+                >
                   いざというとき”うちの子”と一緒に
                 </Heading>
-                <Heading as={'h2'} size={'xl'}>
+                <Heading as={'h2'} size={{ md: 'xl', base: 'md' }}>
                   安心してにげられる場所探しませんか
                 </Heading>
               </GridItem>
@@ -78,10 +82,14 @@ const Home: NextPage = () => {
             height={'100%'}
             backgroundColor={'rgba(255, 255, 255, 0.6)'}
           >
-            <Box color={'#06377B'} fontSize={'4rem'} mb={5}>
+            <Box
+              color={'#06377B'}
+              fontSize={{ md: '4rem', base: '1rem' }}
+              mb={5}
+            >
               ペットと一緒に避難できる避難所
             </Box>
-            <Box fontSize={'2rem'} pb={16}>
+            <Box fontSize={{ md: '2rem', base: '1rem' }} pb={16}>
               わたしの家から一番近いのはどこ？
               <br />
               ペット同伴者専用の避難所や <br />
@@ -89,35 +97,44 @@ const Home: NextPage = () => {
               <br />
             </Box>
             <Center>
-              <Button
-                size="lg"
-                height="4.5rem"
-                width="20%"
-                borderRadius={'2rem'}
-                border={'3px solid white'}
-                backgroundColor={'#E8DD5B'}
-                _hover={{ backgroundColor: '#EAE287' }}
-                onClick={() => location.assign('/map')}
+              <Grid
+                templateColumns="repeat(2, 1fr)"
+                justifyItems={'center'}
+                gap={10}
               >
-                周辺の避難所を検索する
-              </Button>
-              <Button
-                size="lg"
-                height="4.5rem"
-                width="20%"
-                borderRadius={'2rem'}
-                border={'3px solid white'}
-                backgroundColor={'#E8DD5B'}
-                ml={5}
-                _hover={{ backgroundColor: '#EAE287' }}
-                onClick={() => location.assign('/map/form')}
-              >
-                避難所を追加する
-              </Button>
+                <GridItem colSpan={{ md: 1, base: 2 }}>
+                  <Button
+                    size="lg"
+                    height="4.5rem"
+                    minW={'300px'}
+                    borderRadius={'2rem'}
+                    border={'3px solid white'}
+                    backgroundColor={'#E8DD5B'}
+                    _hover={{ backgroundColor: '#EAE287' }}
+                    onClick={() => location.assign('/map')}
+                  >
+                    周辺の避難所を検索する
+                  </Button>
+                </GridItem>
+                <GridItem colSpan={{ md: 1, base: 2 }}>
+                  <Button
+                    size="lg"
+                    height="4.5rem"
+                    minW={'300px'}
+                    borderRadius={'2rem'}
+                    border={'3px solid white'}
+                    backgroundColor={'#E8DD5B'}
+                    _hover={{ backgroundColor: '#EAE287' }}
+                    onClick={() => location.assign('/map/form')}
+                  >
+                    避難所を追加する
+                  </Button>
+                </GridItem>
+              </Grid>
             </Center>
           </Stack>
         </Box>
-        <Box bgColor={'#FDFAF0'} pt={'5rem'} pb={10}>
+        <Box bgColor={'#FDFAF0'} pt={'5rem'} pb={{ md: 10, base: 0 }}>
           {/*<Container maxW={'8xl'} mb={20}>*/}
           {/*  <CustomHeading imageSize={'54'}>*/}
           {/*    <Box fontSize={'3rem'}>ペット避難のニュース</Box>*/}
@@ -158,9 +175,11 @@ const Home: NextPage = () => {
           {/*    </Button>*/}
           {/*  </Box>*/}
           {/*</Container>*/}
-          <Container maxW={'8xl'} mb={20}>
+          <Container maxW={'8xl'} mb={{ md: 20, base: 0 }}>
             <CustomHeading imageSize={'54'}>
-              <Box fontSize={'3rem'}>避難の準備とポイント</Box>
+              <Box fontSize={{ md: '3rem', base: '1rem' }}>
+                避難の準備とポイント
+              </Box>
             </CustomHeading>
             <Grid
               templateColumns="repeat(3, 1fr)"
@@ -181,14 +200,14 @@ const Home: NextPage = () => {
                 height={1080}
                 alt={'気をつけたい　避難所でのトラブル'}
                 link={'/articles/2'}
-              ></Card>
+              />
               <Card
                 src={'/images/kuro.png'}
                 width={1920}
                 height={1080}
                 alt={'ペットとは同行避難が原則'}
                 link={'/articles/3'}
-              ></Card>
+              />
             </Grid>
 
             <Box textAlign={'right'}>
@@ -202,23 +221,13 @@ const Home: NextPage = () => {
             </Box>
           </Container>
         </Box>
-        <Box w={'100vw'} height={'100vh'} position={'relative'}>
-          <Image
-            src={checkSeat}
-            alt={'checkseat'}
-            layout={'fill'}
-            objectFit={'contain'}
-          />
-          <Box
-            position={'absolute'}
-            bottom={'10px'}
-            right={'40%'}
-            onClick={() => window.print()}
-          >
+        <Box w={'100%'} position={'relative'} pb={{ md: 0, base: 34 }}>
+          <Image src={checkSeat} alt={'checkseat'} layout={'responsive'} />
+          <Center onClick={() => window.print()}>
             <Button
               size="lg"
               height="4.5rem"
-              width="300px"
+              width={'300px'}
               borderRadius={'2rem'}
               border={'3px solid white'}
               backgroundColor={'green'}
@@ -227,7 +236,7 @@ const Home: NextPage = () => {
             >
               印刷する
             </Button>
-          </Box>
+          </Center>
         </Box>
       </Box>
       <Box className={styles.print} height={'100vh'} width={'100vw'}>
