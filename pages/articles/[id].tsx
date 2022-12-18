@@ -1,11 +1,11 @@
 import { Fragment } from 'react'
 import { Text } from 'component/Notion/text'
-import { getBlocks, getDatabase, getPage } from './notion'
+import { getBlocks, getDatabase, getPage } from '../../component/Notion/notion'
 import Header from 'component/Header'
 
 import scss from 'styles/point.module.scss'
 
-const renderBlock = (block) => {
+const renderBlock = (block: any) => {
   const { type, id } = block
   const value = block[type]
 
@@ -19,7 +19,7 @@ const renderBlock = (block) => {
   }
 }
 
-export default function Post({ page, blocks }) {
+export default function Post({ page, blocks }: any) {
   if (!page || !blocks) {
     return <div />
   }
@@ -34,7 +34,7 @@ export default function Post({ page, blocks }) {
               <Text text={page.properties['名前'].title} />
             </h1>
             <section>
-              {blocks.map((block) => (
+              {blocks.map((block: any) => (
                 <Fragment key={block.id}>{renderBlock(block)}</Fragment>
               ))}
             </section>
@@ -57,7 +57,7 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async (context: any) => {
   const { id } = context.params
   const page = await getPage(id)
   const blocks = await getBlocks(id)
