@@ -2,6 +2,18 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+```text
+# .env.local
+NOTION_TOKEN=【Notionトークン】
+NOTION_DATABASE_ID=【NotionデータベースID】
+```
+
+- NOTION_TOKEN：Notion のインテグレーション トークン
+  - [Notion のインテグレーション](https://www.notion.so/my-integrations)からシークレットのトークンを参照
+- NOTION_DATABASE_ID:Notion のデータベース ID
+  - データベースをフルページで開いたときの URL（https://www.notion.so/NOTION_DATABASE_ID?v=****。"?v"より前の部分)
+  - データベースページの右上の 3 点リーダから「コネクトの追加」で上記で作成したインテグレーションを指定しておく。
+
 First, run the development server:
 
 ```bash
@@ -33,6 +45,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
 ## Info
+
 [情報リスト](https://docs.google.com/spreadsheets/d/1xqYtFlWZG_hTjmbJk0w719zo2p_RgWgHAVJfXWR4WqA/edit#gid=0)
