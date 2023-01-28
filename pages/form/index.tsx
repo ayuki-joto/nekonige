@@ -21,8 +21,8 @@ const Index: FC = () => {
           <Center>
             <iframe
               src="https://docs.google.com/forms/d/e/1FAIpQLScBsCfKNz0RcBCi2eKBbZb2_3wTMlx4gSd82I9yOLXPltiHxA/viewform?embedded=true"
-              width="640"
-              height="2500"
+              width='600'
+              height='3500'
             >
               読み込んでいます…
             </iframe>
