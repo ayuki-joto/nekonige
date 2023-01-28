@@ -33,7 +33,6 @@ export const getStaticProps: GetStaticProps<Props> = async (): Promise<
   GetStaticPropsResult<Props>
 > => {
   const articles = await getArticleList()
-  console.log(articles)
 
   return {
     props: {

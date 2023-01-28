@@ -48,8 +48,7 @@ export const getDatabase = async (databaseId: string) => {
  * @returns ページ内容
  */
 export const getPage = async (pageId: string) => {
-  const response = await notion.pages.retrieve({ page_id: pageId })
-  return response
+  return await notion.pages.retrieve({ page_id: pageId })
 }
 
 /**
@@ -76,7 +75,7 @@ export const getArticleList = async (): Promise<Article[]> => {
   }
 
   const database = await getDatabase(databaseId)
-  const articles = database
+  return database
     .map((page) => {
       if (
         !page ||
@@ -102,13 +101,8 @@ export const getArticleList = async (): Promise<Article[]> => {
         return article
       }
 
-      const notionImageUrl =
-        page.properties[PAGE_THUMNAIL_KEY].files[0].file.url
-      article.thumbnail = API_NOTION_IMAGE + encodeURIComponent(notionImageUrl)
-
+      article.thumbnail = page.properties[PAGE_THUMNAIL_KEY].files[0].file.url
       return article
     })
     .filter((e): e is Exclude<Article, undefined> => e !== undefined)
-
-  return articles
 }

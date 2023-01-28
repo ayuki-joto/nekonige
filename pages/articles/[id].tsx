@@ -4,25 +4,18 @@ import {
   getBlocks,
   getDatabase,
   getPage,
-  API_NOTION_IMAGE,
   PAGE_TITLE_KEY
-} from '../../component/Notion/notion'
+} from 'component/Notion/notion'
 import Header from 'component/Header'
 import Image from 'next/image'
 
 import scss from 'styles/point.module.scss'
-import {
-  GetStaticProps,
-  GetStaticPropsContext,
-  GetStaticPropsResult
-} from 'next'
-import { ParsedUrlQuery, stringify } from 'querystring'
+import { GetStaticProps, GetStaticPropsResult } from 'next'
+import { ParsedUrlQuery } from 'querystring'
 import {
   GetPageResponse,
-  PageObjectResponse,
   BlockObjectResponse,
-  PartialBlockObjectResponse,
-  ParagraphBlockObjectResponse
+  PartialBlockObjectResponse
 } from '@notionhq/client/build/src/api-endpoints.d'
 import { isFullBlock, isFullPage } from '@notionhq/client'
 
@@ -57,7 +50,7 @@ type BlockObjectResponseMergedChildren = BlockObjectResponse & {
  * @returns
  */
 const renderBlock = (block: BlockObjectResponseMergedChildren) => {
-  const { type, id } = block
+  const { type } = block
 
   switch (type) {
     case 'paragraph':
@@ -90,7 +83,7 @@ const renderBlock = (block: BlockObjectResponseMergedChildren) => {
       return (
         <div style={{ textAlign: 'center' }}>
           <Image
-            src={API_NOTION_IMAGE + encodeURIComponent(notionImageUrl)}
+            src={notionImageUrl}
             alt={caption}
             height={400}
             width={400}

@@ -46,8 +46,6 @@ export const ArticleList: FC<{
         {articles.slice(0, limit).map((article, i: number) => (
           <Card
             src={article.thumbnail}
-            width={1920}
-            height={1080}
             alt={article.title}
             link={`articles/${article.id}`}
             key={i}
