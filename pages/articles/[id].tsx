@@ -199,6 +199,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
       page,
       blocks: blocksWithChildren
     },
-    revalidate: 1
+    revalidate: 300
   }
 }
