@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next'
 import Image from 'next/image'
 import {
   Box,
@@ -13,13 +13,18 @@ import {
 } from '@chakra-ui/react'
 import girl from 'public/images/nekonige.png'
 import CustomHeading from 'component/Heading/CustomHeading'
-import Card from 'component/Card'
 import topIcon from 'public/images/logo_top.png'
 import checkSeat from 'public/images/checkseat_top.jpg'
 import checkSeatPrint from 'public/images/checkseat.jpg'
 import styles from './top.module.scss'
+import { Article, ArticleList } from 'component/Notion/articleList'
+import { getArticleList } from 'component/Notion/notion'
 
-const Home: NextPage = () => {
+type Props = {
+  articles: Article[]
+}
+
+const Home: NextPage<Props> = (props: Props) => {
   return (
     <>
       <Box className={styles.no_print}>
@@ -188,34 +193,7 @@ const Home: NextPage = () => {
                 避難の準備とポイント
               </Box>
             </CustomHeading>
-            <Grid
-              templateColumns="repeat(3, 1fr)"
-              gap={6}
-              textAlign={'center'}
-              mt={10}
-            >
-              <Card
-                src={'/images/cat.jpg'}
-                width={1920}
-                height={1080}
-                alt={'飼い主の命にもかかわる　ペットの避難対策'}
-                link={'/articles/1'}
-              />
-              <Card
-                src={'/images/hinanjo.jpg'}
-                width={1920}
-                height={1080}
-                alt={'気をつけたい　避難所でのトラブル'}
-                link={'/articles/2'}
-              />
-              <Card
-                src={'/images/kuro.png'}
-                width={1920}
-                height={1080}
-                alt={'ペットとは同行避難が原則'}
-                link={'/articles/3'}
-              />
-            </Grid>
+            <ArticleList articles={props.articles} limit={3} />
 
             <Box textAlign={'right'}>
               <Button
@@ -257,6 +235,18 @@ const Home: NextPage = () => {
       </Box>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps<Props> = async (): Promise<
+  GetStaticPropsResult<Props>
+> => {
+  const articles = await getArticleList()
+
+  return {
+    props: {
+      articles: articles
+    }
+  }
 }
 
 export default Home

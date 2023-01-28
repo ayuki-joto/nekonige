@@ -1,6 +1,12 @@
 import { Fragment } from 'react'
 import { Text } from 'component/Notion/text'
-import { getBlocks, getDatabase, getPage } from '../../component/Notion/notion'
+import {
+  getBlocks,
+  getDatabase,
+  getPage,
+  API_NOTION_IMAGE,
+  PAGE_TITLE_KEY
+} from '../../component/Notion/notion'
 import Header from 'component/Header'
 import Image from 'next/image'
 
@@ -10,7 +16,7 @@ import {
   GetStaticPropsContext,
   GetStaticPropsResult
 } from 'next'
-import { ParsedUrlQuery } from 'querystring'
+import { ParsedUrlQuery, stringify } from 'querystring'
 import {
   GetPageResponse,
   PageObjectResponse,
@@ -18,30 +24,21 @@ import {
   PartialBlockObjectResponse,
   ParagraphBlockObjectResponse
 } from '@notionhq/client/build/src/api-endpoints.d'
+import { isFullBlock, isFullPage } from '@notionhq/client'
 
 type Props = {
   page: GetPageResponse
-  blocks: (BlockObjectResponseMergedChildren | PartialBlockObjectResponse)[]
+  blocks: BlockObjectResponseMergedChildren[]
 }
 
 interface Params extends ParsedUrlQuery {
   id: string
 }
 
-function isBlockObjectResponse(
-  block: BlockObjectResponse | PartialBlockObjectResponse
-): block is BlockObjectResponse {
-  if (!('has_children' in block)) {
-    return false
-  }
-  return true
-}
-
-function isPageObjectResponse(page: any): page is PageObjectResponse {
-  if (!('properties' in page)) {
-    return false
-  }
-  return true
+function isBlockObjectResponseArray(
+  arr: BlockObjectResponse[] | PartialBlockObjectResponse[]
+): arr is BlockObjectResponse[] {
+  return arr.every((block) => isFullBlock(block))
 }
 
 /**
@@ -51,13 +48,8 @@ type BlockObjectResponseMergedChildren = BlockObjectResponse & {
   /**
    * 子ブロック
    */
-  children: (BlockObjectResponse | PartialBlockObjectResponse)[] | undefined
+  children: BlockObjectResponse[]
 }
-
-/**
- * ページプロパティのタイトルを示すキー
- */
-const PAGE_TITLE_KEY = '名前'
 
 /**
  *
@@ -90,15 +82,15 @@ const renderBlock = (block: BlockObjectResponseMergedChildren) => {
         return
       }
 
-      const src =
+      const notionImageUrl =
         value.type === 'external' ? value.external.url : value.file.url
       const caption = block[type].caption.length
         ? block[type].caption[0].plain_text
         : ''
       return (
-        <div>
+        <div style={{ textAlign: 'center' }}>
           <Image
-            src={src}
+            src={API_NOTION_IMAGE + encodeURIComponent(notionImageUrl)}
             alt={caption}
             height={400}
             width={400}
@@ -115,12 +107,10 @@ export default function Post(props: Props) {
 
   if (
     !page ||
-    !blocks ||
-    !isPageObjectResponse(page) ||
-    // !('title' in page.properties) ||
+    !isFullPage(page) ||
     !('title' in page.properties[PAGE_TITLE_KEY])
   ) {
-    return <div></div>
+    return
   }
 
   return (
@@ -134,9 +124,6 @@ export default function Post(props: Props) {
             </h1>
             <section>
               {blocks.map((block) => {
-                if (!('has_children' in block)) {
-                  return
-                }
                 return <Fragment key={block.id}>{renderBlock(block)}</Fragment>
               })}
             </section>
@@ -167,33 +154,52 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   const blocks = await getBlocks(id)
 
   // 子ブロックを取得
-  const childBlocks = await Promise.all(
+  let childBlocks = await Promise.all(
     blocks
-      .filter((block) => isBlockObjectResponse(block) && block.has_children)
+      .filter((block) => isFullBlock(block) && block.has_children)
       .map(async (block) => {
-        return {
-          id: block.id,
-          children: await getBlocks(block.id)
+        const childBlocks = await getBlocks(block.id)
+
+        if (isBlockObjectResponseArray(childBlocks)) {
+          return {
+            id: block.id,
+            children: childBlocks
+          }
         }
       })
+      .filter(
+        (
+          e
+        ): e is Exclude<
+          Promise<{ id: string; children: BlockObjectResponse[] }>,
+          undefined
+        > => e !== undefined
+      )
   )
 
   // 子ブロックの内容をマージ
-  const blocksWithChildren = blocks.map((block) => {
-    if (!isBlockObjectResponse(block)) {
-      return block
-    }
+  const blocksWithChildren = blocks
+    .map((block) => {
+      if (!isFullBlock(block)) {
+        return
+      }
 
-    let NewBlock: BlockObjectResponseMergedChildren = Object.assign(block, {
-      children: []
+      let NewBlock: BlockObjectResponseMergedChildren = Object.assign(block, {
+        children: []
+      })
+      const childBlock = childBlocks.find((x) => x.id === block.id)
+      if (
+        childBlock !== undefined &&
+        isBlockObjectResponseArray(childBlock.children)
+      ) {
+        NewBlock['children'] = childBlock.children
+      }
+      return NewBlock
     })
-    if (isBlockObjectResponse(block) && block.has_children) {
-      NewBlock['children'] = childBlocks.find(
-        (x) => x.id === block.id
-      )?.children
-    }
-    return NewBlock
-  })
+    .filter(
+      (e): e is Exclude<BlockObjectResponseMergedChildren, undefined> =>
+        e !== undefined
+    )
 
   return {
     props: {
