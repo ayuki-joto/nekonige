@@ -99,13 +99,21 @@ const Home: NextPage<Props> = (props: Props) => {
             >
               ペットと一緒に避難できる避難所
             </Box>
-            <Box fontSize={{ md: '2rem', base: '1rem' }} pb={16}>
+            <Box fontSize={{ md: '2rem', base: '1rem' }}>
               わたしの家から一番近いのはどこ？
               <br />
               ペット同伴者専用の避難所や <br />
               ペットと一緒に避難することを認めている避難所をまとめました
               <br />
             </Box>
+            <Box fontSize={{ md: '1rem', base: '0.5rem' }} pb={16}>
+              ※避難所リストは有志で更新しているため、最新の情報ではない可能性があります。
+              <br />
+              実際の避難時ではなく避難の準備にご使用ください。
+              <br />
+              個別の正確な情報が必要な場合は各自治体にお問い合わせください。
+            </Box>
+
             <Center>
               <Grid
                 templateColumns="repeat(2, 1fr)"
