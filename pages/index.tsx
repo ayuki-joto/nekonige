@@ -245,7 +245,8 @@ export const getStaticProps: GetStaticProps<Props> = async (): Promise<
   return {
     props: {
       articles: articles
-    }
+    },
+    revalidate: 300
   }
 }
 
