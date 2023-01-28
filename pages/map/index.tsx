@@ -24,8 +24,8 @@ const MapIndex: FC = () => {
   return (
     <>
       <Header />
-      <Box bgColor={'#FDFAF0'} height={'100vh'} width={'100%'} pt={10}>
-        <Container maxW={{ md: '80%', sm: '100%' }} height={'80vh'} pt={10}>
+      <Box bgColor={'#FDFAF0'} width={'100%'} height={'125vh'} pt={10}>
+        <Container maxW={'100%'} height={'80vh'} pt={10} bgColor={'#FDFAF0'}>
           <Box pb={10}>
             <CustomHeading
               imageSize={useBreakpointValue({ base: '32', md: '54' })}
@@ -85,6 +85,21 @@ const MapIndex: FC = () => {
               height="100%"
             ></iframe>
           </Center>
+          <Box pb={5} pt={5} bgColor={'#FDFAF0'} paddingX={20} width={'100%'}>
+            ※避難所リストは有志で更新しているため、最新の情報ではない可能性があります。
+            <br />
+            実際の避難時ではなく避難の準備にご使用ください。
+            <br />
+            被災時に避難所が開設されたか、災害が起きてから同行避難できるか調べたい場合など、今すぐ正確な情報が必要な場合は各自治体のHPを確認するか、直接お問い合わせください。
+          </Box>
+          <Box bgColor={'#FDFAF0'} paddingX={20} marginX={0} width={'100%'}>
+            このサービスは、以下の著作物を改変して利用しています。
+            <br />
+            東京都防災マップ 避難所・避難場所一覧データ、東京都
+            <br />
+            クリエイティブ・コモンズ・ライセンス
+            表示4.0国際（https://creativecommons.org/licenses/by/4.0/deed.ja）
+          </Box>
         </Container>
       </Box>
     </>
