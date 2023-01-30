@@ -70,6 +70,17 @@ const MapIndex: FC = () => {
             >
               福岡
             </Button>
+            <Button
+              onClick={() => {
+                setMapURL(
+                  'https://www.google.com/maps/d/embed?mid=1pO9OONWCtfgm9GFemvfmA6xwg-PQPgg&ehbc=2E312F&z=12&ll=32.80826146245689, 130.69418912636309'
+                )
+                setLoading(true)
+                setKeyValue(keyValue + 1)
+              }}
+            >
+              熊本
+            </Button>
           </Center>
 
           <Center height={'100%'} display={loading ? 'flex' : 'none'}>
